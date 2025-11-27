@@ -1,0 +1,325 @@
+/* Labs Styles */
+.labs-container {
+  padding: 30px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.labs-header {
+  margin-bottom: 30px;
+}
+
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.lab-card {
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(15, 20, 40, 0.9));
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.lab-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.lab-card:hover {
+  border-color: var(--secondary-color);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+}
+
+.lab-card:hover::before {
+  opacity: 1;
+}
+
+.lab-card.rodando {
+  border-color: var(--primary-color);
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 212, 255, 0.05));
+}
+
+.lab-status-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  background: rgba(0, 255, 65, 0.15);
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.lab-card.parado .lab-status-badge {
+  background: rgba(255, 5, 85, 0.15);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.lab-name {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-weight: bold;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lab-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.lab-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.badge-iniciante {
+  background: rgba(0, 255, 65, 0.2);
+  color: var(--success);
+}
+
+.badge-intermediario {
+  background: rgba(255, 165, 0, 0.2);
+  color: var(--warning);
+}
+
+.badge-avancado {
+  background: rgba(255, 5, 85, 0.2);
+  color: var(--danger);
+}
+
+.badge-expert {
+  background: rgba(255, 0, 128, 0.2);
+  color: #ff0080;
+}
+
+.lab-category {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  color: var(--secondary-color);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.lab-ip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.ip-label {
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.ip-value {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+  flex: 1;
+}
+
+.lab-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.lab-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: rgba(0, 255, 65, 0.1);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lab-button:hover {
+  background: rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+.lab-button.stop {
+  background: rgba(255, 5, 85, 0.1);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.lab-button.stop:hover {
+  background: rgba(255, 5, 85, 0.2);
+  box-shadow: 0 0 15px rgba(255, 5, 85, 0.3);
+}
+
+.lab-running-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 8px 12px;
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* Lab Modal */
+.lab-modal {
+  background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(26, 31, 58, 0.95));
+  border: 2px solid var(--secondary-color);
+  border-radius: 12px;
+  max-width: 650px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.lab-full-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.lab-info-section,
+.lab-section {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.lab-info-section h3,
+.lab-section h3 {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 15px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.info-box .label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-box .value {
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.vuln-list,
+.hints-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vuln-list li {
+  padding: 10px 12px;
+  background: rgba(255, 5, 85, 0.1);
+  border-left: 3px solid var(--danger);
+  color: var(--text-primary);
+  border-radius: 4px;
+}
+
+.hints-list li {
+  padding: 10px 12px;
+  background: rgba(0, 212, 255, 0.1);
+  border-left: 3px solid var(--secondary-color);
+  color: var(--text-primary);
+  border-radius: 4px;
+  padding-left: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .labs-container {
+    padding: 15px;
+  }
+
+  .labs-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .lab-modal {
+    width: 95%;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
