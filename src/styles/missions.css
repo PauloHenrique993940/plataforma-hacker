@@ -32,6 +32,7 @@
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   white-space: nowrap;
+  margin-top: 10px;
 }
 
 .tab-button:hover {
