@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from "react";
 import {
   Zap,
   Play,
@@ -150,16 +151,6 @@ export const Tools: React.FC = () => {
     return statusMap[status] || statusMap.disponivel;
   };
 
-  const toggleTool = (toolId: string, status: string) => {
-    if (status !== "disponivel") return;
-    const newActive = new Set(activeTools);
-    if (newActive.has(toolId)) {
-      newActive.delete(toolId);
-    } else {
-      newActive.add(toolId);
-    }
-    setActiveTools(newActive);
-  };
 
   const handleStart = (tool: Tool) => {
     if (tool.status !== "disponivel") return;
@@ -583,57 +574,57 @@ export const Tools: React.FC = () => {
                   {/* Execution History */}
                   {executions.filter((e) => e.toolId === selectedTool.id)
                     .length > 0 && (
-                    <div
-                      className="
-                        history-box
-                      "
-                    >
-                      <h3>Histórico de Execuções:</h3>
                       <div
                         className="
+                        history-box
+                      "
+                      >
+                        <h3>Histórico de Execuções:</h3>
+                        <div
+                          className="
                           executions-list
                         "
-                      >
-                        {executions
-                          .filter((e) => e.toolId === selectedTool.id)
-                          .slice(0, 5)
-                          .map((exec) => (
-                            <div
-                              key={exec.id}
-                              className="
+                        >
+                          {executions
+                            .filter((e) => e.toolId === selectedTool.id)
+                            .slice(0, 5)
+                            .map((exec) => (
+                              <div
+                                key={exec.id}
+                                className="
                                 execution-item
                               "
-                            >
-                              <div
-                                className="
+                              >
+                                <div
+                                  className="
                                   exec-time
                                 "
-                              >
-                                {new Date(exec.startTime).toLocaleTimeString()}
-                              </div>
-                              <div
-                                className="
+                                >
+                                  {new Date(exec.startTime).toLocaleTimeString()}
+                                </div>
+                                <div
+                                  className="
                                   exec-params
                                 "
-                              >
-                                {exec.parameters.join(" ") || "sem parâmetros"}
-                              </div>
-                              <button
-                                onClick={() => {
-                                  setCurrentExecution(exec);
-                                  setShowOutput(true);
-                                }}
-                                className="
+                                >
+                                  {exec.parameters.join(" ") || "sem parâmetros"}
+                                </div>
+                                <button
+                                  onClick={() => {
+                                    setCurrentExecution(exec);
+                                    setShowOutput(true);
+                                  }}
+                                  className="
                                   btn-view-output
                                 "
-                              >
-                                Ver Saída
-                              </button>
-                            </div>
-                          ))}
+                                >
+                                  Ver Saída
+                                </button>
+                              </div>
+                            ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
                 </>
               ) : (
                 // Output Display
